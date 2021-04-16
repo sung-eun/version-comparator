@@ -12,6 +12,13 @@ object VersionComparator {
             return EQUALS
         }
 
+        if (v1.isEmpty()) {
+            return LESS_THAN
+        }
+        if (v2.isEmpty()) {
+            return GREATER_THAN
+        }
+
         val splits1 = v1.split(".")
         val splits2 = v2.split(".")
         val indexLimit = splits1.size.coerceAtMost(splits2.size)
