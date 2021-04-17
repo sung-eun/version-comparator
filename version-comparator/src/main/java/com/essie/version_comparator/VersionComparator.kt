@@ -7,11 +7,10 @@ object VersionComparator {
     const val EQUALS = 0
     const val GREATER_THAN = 1
 
-    fun compareTo(v1: String, v2: String): Int {
+    fun compareTo(v1: String, v2: String, comparator: Comparator<String>? = null): Int {
         if (v1 == v2) {
             return EQUALS
         }
-
         if (v1.isEmpty()) {
             return LESS_THAN
         }
@@ -33,7 +32,7 @@ object VersionComparator {
                     return if (compareTo < 0) LESS_THAN else GREATER_THAN
                 }
             } else {
-                val compareTo = s1.compareTo(s2)
+                val compareTo = comparator?.compare(s1, s2) ?: s1.compareTo(s2)
                 if (compareTo != EQUALS) {
                     return if (compareTo < 0) LESS_THAN else GREATER_THAN
                 }
