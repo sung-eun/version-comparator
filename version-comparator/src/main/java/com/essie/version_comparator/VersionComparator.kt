@@ -20,7 +20,7 @@ object VersionComparator {
 
         val splits1 = v1.split(".")
         val splits2 = v2.split(".")
-        val indexLimit = splits1.size.coerceAtMost(splits2.size)
+        val indexLimit = splits1.size.coerceAtMost(splits2.size) - 1
 
         for (i in 0..indexLimit) {
             val s1 = splits1[i]
